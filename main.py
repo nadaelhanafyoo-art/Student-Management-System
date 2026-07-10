@@ -32,26 +32,28 @@ def view_students():
         print("Age  :", student["age"])
         print("Grade:", student["grade"])
 
-print("===== Student Management System =====")
+while True:
 
-print("1. Add Student")
-print("2. View Students")
-print("3. Search Student")
-print("4. Exit")
+    print("\n===== Student Management System =====")
+    print("1. Add Student")
+    print("2. View Students")
+    print("3. Search Student")
+    print("4. Exit")
 
-choice = input("Choose an option: ")
+    choice = input("Choose an option: ")
 
-if choice == "1":
-    add_student()
+    if choice == "1":
+        add_student()
 
-elif choice == "2":
-    view_students() 
+    elif choice == "2":
+        view_students()
 
-elif choice == "3":
-    print("Search Student")
+    elif choice == "3":
+        print("Search Student")
 
-elif choice == "4":
-    print("Good Bye")
+    elif choice == "4":
+        print("Good Bye")
+        break
 
-else:
-    print("Invalid Choice")
+    else:
+        print("Invalid Choice")
