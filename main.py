@@ -1,3 +1,5 @@
+students = []
+
 def add_student():
     print("\n===== Add Student =====")
 
@@ -5,12 +7,30 @@ def add_student():
     age = input("Enter student age: ")
     grade = input("Enter student grade: ")
 
-    print("\nStudent Information")
-    print("--------------------")
-    print("Name :", name)
-    print("Age  :", age)
-    print("Grade:", grade)
+    student = {
+        "name": name,
+        "age": age,
+        "grade": grade
+    }
 
+    students.append(student)
+
+    print("\nStudent added successfully!")
+    print(students)
+
+
+def view_students():
+    print("\n===== Students List =====")
+
+    if len(students) == 0:
+        print("No students found.")
+        return
+
+    for student in students:
+        print("----------------------")
+        print("Name :", student["name"])
+        print("Age  :", student["age"])
+        print("Grade:", student["grade"])
 
 print("===== Student Management System =====")
 
@@ -25,7 +45,7 @@ if choice == "1":
     add_student()
 
 elif choice == "2":
-    print("View Students")
+    view_students() 
 
 elif choice == "3":
     print("Search Student")
