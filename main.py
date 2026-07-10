@@ -1,4 +1,19 @@
+import json
+
 students = []
+
+def load_students():
+    global students
+
+    try:
+        with open("students.json", "r") as file:
+            students = json.load(file)
+    except:
+        students = []
+
+def save_students():
+    with open("students.json", "w") as file:
+        json.dump(students, file, indent=4)
 
 def add_student():
     print("\n===== Add Student =====")
@@ -15,9 +30,9 @@ def add_student():
 
     students.append(student)
 
-    print("\nStudent added successfully!")
-    print(students)
+    save_students()
 
+    print("\nStudent added successfully!")
 
 def view_students():
     print("\n===== Students List =====")
@@ -31,6 +46,32 @@ def view_students():
         print("Name :", student["name"])
         print("Age  :", student["age"])
         print("Grade:", student["grade"])
+
+load_students()
+
+def search_student():
+
+    print("\n===== Search Student =====")
+
+    search_name = input("Enter student name: ")
+
+    found = False
+
+    for student in students:
+
+        if student["name"].lower() == search_name.lower():
+
+            print("\nStudent Found")
+            print("----------------------")
+            print("Name :", student["name"])
+            print("Age  :", student["age"])
+            print("Grade:", student["grade"])
+
+            found = True
+            break
+
+    if found == False:
+        print("Student not found.")
 
 while True:
 
@@ -49,11 +90,14 @@ while True:
         view_students()
 
     elif choice == "3":
-        print("Search Student")
+        search_student()
 
     elif choice == "4":
         print("Good Bye")
         break
+
+    elif choice == "":
+        continue
 
     else:
         print("Invalid Choice")
