@@ -1,5 +1,15 @@
 def add_student():
-    print("=== Add Student ===")
+    print("\n===== Add Student =====")
+
+    name = input("Enter student name: ")
+    age = input("Enter student age: ")
+    grade = input("Enter student grade: ")
+
+    print("\nStudent Information")
+    print("--------------------")
+    print("Name :", name)
+    print("Age  :", age)
+    print("Grade:", grade)
 
 
 print("===== Student Management System =====")
