@@ -73,13 +73,40 @@ def search_student():
     if found == False:
         print("Student not found.")
 
+def delete_student():
+
+    print("\n===== Delete Student =====")
+
+    delete_name = input("Enter student name: ")
+
+    found = False
+
+    for student in students:
+
+        if student["name"].lower() == delete_name.lower():
+
+            students.remove(student)
+
+            save_students()
+
+            print("Student deleted successfully!")
+
+            found = True
+
+            break
+
+    if found == False:
+
+        print("Student not found.")        
+
 while True:
 
     print("\n===== Student Management System =====")
     print("1. Add Student")
     print("2. View Students")
     print("3. Search Student")
-    print("4. Exit")
+    print("4. Delete Student")
+    print("5. Exit")
 
     choice = input("Choose an option: ")
 
@@ -93,6 +120,9 @@ while True:
         search_student()
 
     elif choice == "4":
+        delete_student()
+
+    elif choice == "5":
         print("Good Bye")
         break
 
