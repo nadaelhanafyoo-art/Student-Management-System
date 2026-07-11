@@ -97,7 +97,36 @@ def delete_student():
 
     if found == False:
 
-        print("Student not found.")        
+        print("Student not found.")    
+
+def edit_student():
+
+    print("\n===== Edit Student =====")
+
+    edit_name = input("Enter student name: ")
+
+    found = False
+
+    for student in students:
+
+        if student["name"].lower() == edit_name.lower():
+
+            print("\nEnter new data")
+
+            student["name"] = input("New name: ")
+            student["age"] = input("New age: ")
+            student["grade"] = input("New grade: ")
+
+            save_students()
+
+            print("\nStudent updated successfully!")
+
+            found = True
+
+            break
+
+    if found == False:
+        print("Student not found.")           
 
 while True:
 
@@ -106,7 +135,8 @@ while True:
     print("2. View Students")
     print("3. Search Student")
     print("4. Delete Student")
-    print("5. Exit")
+    print("5. Edit Student")
+    print("6. Exit")
 
     choice = input("Choose an option: ")
 
@@ -123,6 +153,9 @@ while True:
         delete_student()
 
     elif choice == "5":
+        edit_student()    
+
+    elif choice == "6":
         print("Good Bye")
         break
 
