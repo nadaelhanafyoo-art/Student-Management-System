@@ -2,6 +2,7 @@ import json
 
 students = []
 
+
 def load_students():
     global students
 
@@ -11,16 +12,18 @@ def load_students():
     except:
         students = []
 
+
 def save_students():
     with open("students.json", "w") as file:
         json.dump(students, file, indent=4)
 
+
 def add_student():
     print("\n===== Add Student =====")
 
-    name = input("Enter student name: ")
-    age = input("Enter student age: ")
-    grade = input("Enter student grade: ")
+    name = input("Enter student name: ").strip()
+    age = input("Enter student age: ").strip()
+    grade = input("Enter student grade: ").strip()
 
     student = {
         "name": name,
@@ -33,6 +36,7 @@ def add_student():
     save_students()
 
     print("\nStudent added successfully!")
+
 
 def view_students():
     print("\n===== Students List =====")
@@ -47,18 +51,15 @@ def view_students():
         print("Age  :", student["age"])
         print("Grade:", student["grade"])
 
-load_students()
 
 def search_student():
-
     print("\n===== Search Student =====")
 
-    search_name = input("Enter student name: ")
+    search_name = input("Enter student name: ").strip()
 
     found = False
 
     for student in students:
-
         if student["name"].lower() == search_name.lower():
 
             print("\nStudent Found")
@@ -70,19 +71,18 @@ def search_student():
             found = True
             break
 
-    if found == False:
+    if not found:
         print("Student not found.")
 
-def delete_student():
 
+def delete_student():
     print("\n===== Delete Student =====")
 
-    delete_name = input("Enter student name: ")
+    delete_name = input("Enter student name: ").strip()
 
     found = False
 
     for student in students:
-
         if student["name"].lower() == delete_name.lower():
 
             students.remove(student)
@@ -92,41 +92,40 @@ def delete_student():
             print("Student deleted successfully!")
 
             found = True
-
             break
 
-    if found == False:
+    if not found:
+        print("Student not found.")
 
-        print("Student not found.")    
 
 def edit_student():
-
     print("\n===== Edit Student =====")
 
-    edit_name = input("Enter student name: ")
+    edit_name = input("Enter student name: ").strip()
 
     found = False
 
     for student in students:
-
         if student["name"].lower() == edit_name.lower():
 
             print("\nEnter new data")
 
-            student["name"] = input("New name: ")
-            student["age"] = input("New age: ")
-            student["grade"] = input("New grade: ")
+            student["name"] = input("New name: ").strip()
+            student["age"] = input("New age: ").strip()
+            student["grade"] = input("New grade: ").strip()
 
             save_students()
 
             print("\nStudent updated successfully!")
 
             found = True
-
             break
 
-    if found == False:
-        print("Student not found.")           
+    if not found:
+        print("Student not found.")
+
+
+load_students()
 
 while True:
 
@@ -138,7 +137,7 @@ while True:
     print("5. Edit Student")
     print("6. Exit")
 
-    choice = input("Choose an option: ")
+    choice = input("Choose an option: ").strip()
 
     if choice == "1":
         add_student()
@@ -153,7 +152,7 @@ while True:
         delete_student()
 
     elif choice == "5":
-        edit_student()    
+        edit_student()
 
     elif choice == "6":
         print("Good Bye")
@@ -163,4 +162,4 @@ while True:
         continue
 
     else:
-        print("Invalid Choice")
+        print("Invalid Choice") 
